@@ -8,7 +8,7 @@ image:
   credit: Qian Chen
 ---
 
-My Name is [Qian Chen](//www.comp.hkbu.edu.hk/~qchen). I'm currently a PhD candidate in Dept. of Computer Science in Hong Kong Baptist University. This site is to record some interesting things for me.
+My name is [Qian Chen](//www.comp.hkbu.edu.hk/~qchen). I'm currently a PhD candidate in Dept. of Computer Science in Hong Kong Baptist University. This site is to record some interesting things for me.
 
 You can find me on [Github](https://github.com/topskychen), [Weibo](http://weibo.com/topskychen), [Facebook](https://www.facebook.com/topskychen) and [LinkedIn](https://hk.linkedin.com/pub/qian-chen/92/619/574).
 
