@@ -1,0 +1,29 @@
+# Authors
+
+billy_rick:
+  name: Billy Rick
+  web: http://thewhip.com
+  email: billy@rick.com
+  bio: "What do you want, jewels? I am a very extravagant man."
+  avatar: bio-photo-2.jpg
+  twitter: extravagantman
+  google:
+    plus: BillyRick
+
+cornelius_fiddlebone:
+  name: Cornelius Fiddlebone
+  email: cornelius@thewhip.com
+  bio: "I ordered what?"
+  avatar: bio-photo.jpg
+  twitter: rhymeswithsackit
+  google:
+    plus: CorneliusFiddlebone
+
+
+topskychen:
+  name: Qian Chen
+  web: http://www.comp.hkbu.edu.hk/~qchen
+  email: topskychen@gmail.com
+  bio: "hello world"
+  avatar: http://s.gravatar.com/avatar/cb4c62ba05b2bd67604c8da4b554ce36?s=190
+  github: topskychen
