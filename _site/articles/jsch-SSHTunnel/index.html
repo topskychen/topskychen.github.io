@@ -5,15 +5,15 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Hello World &#8211; Qian Chen</title>
-
-<meta name="keywords" content="">
+<title>SSH Tunnel via JSCH Library &#8211; </title>
+<meta name="description" content="Establish a ssh tunnel to retrieve the resources behind the firewall.">
+<meta name="keywords" content="ssh, jsch">
 
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="Hello World">
-
+<meta name="twitter:title" content="SSH Tunnel via JSCH Library">
+<meta name="twitter:description" content="Establish a ssh tunnel to retrieve the resources behind the firewall.">
 
 
 
@@ -23,17 +23,17 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-
-<meta property="og:url" content="http://localhost:4000/blog/hello-world-blog/">
-<meta property="og:site_name" content="Qian Chen">
-
-
+<meta property="og:title" content="SSH Tunnel via JSCH Library">
+<meta property="og:description" content="Establish a ssh tunnel to retrieve the resources behind the firewall.">
+<meta property="og:url" content="http://localhost:4000/articles/jsch-SSHTunnel/">
+<meta property="og:site_name" content="">
 
 
 
-<link rel="canonical" href="http://localhost:4000/blog/hello-world-blog/">
-<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Qian Chen Feed">
+
+
+<link rel="canonical" href="http://localhost:4000/articles/jsch-SSHTunnel/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
 
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
@@ -107,9 +107,9 @@
 <header class="masthead">
 	<div class="wrap">
       
-  		<a href="http://localhost:4000/" class="site-logo" rel="home" title="Qian Chen"><img src="http://localhost:4000/images/logo-CQ.png" width="200" height="200" alt="Qian Chen logo" class="animated fadeInDown"></a>
+  		<a href="http://localhost:4000/" class="site-logo" rel="home" title=""><img src="http://localhost:4000/images/logo-CQ.png" width="200" height="200" alt=" logo" class="animated fadeInDown"></a>
       
-      <h1 class="site-title animated fadeIn"><a href="http://localhost:4000/">Qian Chen</a></h1>
+      <h1 class="site-title animated fadeIn"><a href="http://localhost:4000/"></a></h1>
 		<h2 class="site-description animated fadeIn" itemprop="description"></h2>
 	</div>
 </header><!-- /.masthead -->
@@ -122,9 +122,9 @@
     
     <div class="entry-wrapper">
       <header class="entry-header">
-        <span class="entry-tags"></span>
+        <span class="entry-tags"><a href="http://localhost:4000/tags/#ssh" title="Pages tagged ssh">ssh</a>&nbsp;&bull;&nbsp;<a href="http://localhost:4000/tags/#jsch" title="Pages tagged jsch">jsch</a></span>
         
-          <h1 class="entry-title">Hello World</h1>
+          <h1 class="entry-title">SSH Tunnel via JSCH Library</h1>
         
       </header>
       <footer class="entry-meta">
@@ -134,21 +134,54 @@
           <img src="http://www.gravatar.com/avatar/cb4c62ba05b2bd67604c8da4b554ce36.png?s=400" class="bio-photo" alt="Qian Chen bio photo"></a>
         
         <span class="author vcard">By <span class="fn">Qian Chen</span></span>
-        <span class="entry-date date published"><time datetime="2015-04-08T00:00:00+08:00"><i class="fa fa-calendar-o"></i> April 08, 2015</time></span>
-        
-        
+        <span class="entry-date date published"><time datetime="2015-04-24T00:00:00+08:00"><i class="fa fa-calendar-o"></i> April 24, 2015</time></span>
+        <span class="entry-date date modified"><time datetime="2015-04-24"><i class="fa fa-pencil"></i> April 24, 2015</time></span>
+        <span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>
         
         
       </footer>
       <div class="entry-content">
-        <p>This is the hello world for my blog.</p>
+        <p>To retrieve resources behind the firewall, one solution is to connect to a public server first as a middle man, and then via the server to reach the resources. The solution is to establish a ssh tunnel.</p>
+
+<p>One can use a command line like <code>ssh -L xxx</code> (google to see details).
+However we use a jsch library to (build a <a href="http://topskychen.github.io">java program</a> and then) create a simple bash file. </p>
+
+<p>I have prepared a ssh.jar. To use it, type <code>java -jar ssh.jar local_port:ssh_server remote_server:remote_port</code>.</p>
+
+<p>By the way, we can use <code>lsof -i tcp:'port_no'</code> to see the the port information, e.g., <code>lsof -i tcp:9001</code>.</p>
+
+
+        
+          <div id="disqus_thread"></div><!-- /#disqus_thread -->
+          
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'topskychen'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
         
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
       
-        <a href="http://localhost:4000/articles/hello-world-article/" class="btn" title="Hello World">Previous</a>
+        <a href="http://localhost:4000/blog/so-simple-theme-blog/" class="btn" title="Hello World">Previous</a>
       
       
     </nav><!-- /.pagination -->
@@ -175,6 +208,31 @@
 </div><!-- /.social-icons -->
   </footer>
 </div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:4000';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'topskychen']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 
 
 
