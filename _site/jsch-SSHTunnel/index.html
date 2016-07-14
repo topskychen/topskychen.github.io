@@ -1,0 +1,9 @@
+<p>To retrieve resources behind the firewall, one solution is to connect to a public server first as a middle man, and then via the server to reach the resources. The solution is to establish a ssh tunnel.</p>
+
+<p>One can use a command line like <code class="highlighter-rouge">ssh -L xxx</code> (google to see details).
+However we use a jsch library to (build a <a href="https://github.com/topskychen/SSH_Tunnel">java program</a> and then) create a simple bash file.</p>
+
+<p>I have prepared a ssh.jar. To use it, type <code class="highlighter-rouge">java -jar ssh.jar local_port:ssh_server remote_server:remote_port</code>.</p>
+
+<p>By the way, we can use <code class="highlighter-rouge">lsof -i tcp:'port_no'</code> to see the the port information, e.g., <code class="highlighter-rouge">lsof -i tcp:9001</code>.</p>
+

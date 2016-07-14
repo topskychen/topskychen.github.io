@@ -1,35 +1,37 @@
-# baseurl: 
-
 # Site wide configuration
 
-title: 
+title: Qian's Site
 locale: en_US
 description: 
-# logo: site-logo.png
 logo: logo-CQ.png
 search: true
-# url: http://localhost:4000
-url: https://topskychen.github.io
+url: http://localhost:4000
+# url: https://topskychen.github.io
 # Jekyll configuration
 
 permalink:   /:categories/:title/
 markdown:    kramdown
-highlighter: pygments
+highlighter: rouge
 sass:
   sass_dir: _sass
   style: compressed
 gems:
   - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
 
 kramdown:
+  input: GFM
   auto_ids: true
   footnote_nr: 1
   entity_output: as_char
   toc_levels: 1..2
-  use_coderay: false
+  enable_coderay: false
+
+mathjax: true
 
 include: [".htaccess"]
-exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md", "vendor"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", ".less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md", "vendor"]
 
 
 # Site owner
@@ -42,15 +44,16 @@ owner:
   facebook: topskychen
   github: topskychen
   stackexchange: #http://stackoverflow.com/users/123456/username
-  linkedin: https://hk.linkedin.com/pub/qian-chen/92/619/574
+  linkedin: #username
   instagram: #username
   flickr: #username
   tumblr: #username
   pinterest: #username
+  weibo: #userid
   google:
     plus: #username
     analytics: topskychen
     verify:
     ad-client:
-    ad-slot: 
+    ad-slot:
   bing-verify:

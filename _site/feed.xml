@@ -1,70 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-<title type="text"></title>
-<generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
-<link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2015-04-24T23:03:03+08:00</updated>
-<id>http://localhost:4000/</id>
-<author>
-  <name>Qian Chen</name>
-  <uri>http://localhost:4000/</uri>
-  <email>topskychen@gmail.com</email>
-</author>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.1.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2016-07-13T22:34:15+08:00</updated><id>http://localhost:4000/</id><title>Qian&#39;s Site</title><entry><title>Generate Points in a Circle with Uniform Distribution</title><link href="http://localhost:4000/articles/UniformPointGenerator/" rel="alternate" type="text/html" title="Generate Points in a Circle with Uniform Distribution" /><published>2016-07-12T00:00:00+08:00</published><updated>2016-07-12T00:00:00+08:00</updated><id>http://localhost:4000/articles/UniformPointGenerator</id><content type="html" xml:base="http://localhost:4000/articles/UniformPointGenerator/">&lt;p&gt;One naive but wrong idea is to randomly pick the degree and then the radius. We can find out the probability for a point located at &lt;script type=&quot;math/tex&quot;&gt;(\alpha, r)&lt;/script&gt; in a circle is &lt;script type=&quot;math/tex&quot;&gt;p(\alpha, r) = \frac{1} {2\pi R}&lt;/script&gt;, where R is the circle radius, which is different from the uniform probability &lt;script type=&quot;math/tex&quot;&gt;\frac{1} {\pi R^2}&lt;/script&gt;.&lt;/p&gt;
 
+&lt;p&gt;Instead, we can regard a circle composed of infinite triangles. Since we can easily generate uniform-distributed points in a triangle, it is easy to find the correct solution for a circle. See this &lt;a href=&quot;http://stackoverflow.com/questions/5837572/generate-a-random-point-within-a-circle-uniformly&quot;&gt;answer&lt;/a&gt; for ref.&lt;/p&gt;
 
-  
+&lt;p&gt;As a conclusion, the pseudocode of generator is listed as follows:&lt;/p&gt;
 
-<entry>
-  <title type="html"><![CDATA[SSH Tunnel via JSCH Library]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/articles/jsch-SSHTunnel/" />
-  <id>http://localhost:4000/articles/jsch-SSHTunnel</id>
-  <updated>2015-04-24T00:00:00-00:00</updated>
-  <published>2015-04-24T00:00:00+08:00</published>
-  
-  <author>
-    <name>Qian Chen</name>
-    <uri>http://localhost:4000</uri>
-    <email>topskychen@gmail.com</email>
-  </author>
-  <content type="html">
-    &lt;p&gt;To retrieve resources behind the firewall, one solution is to connect to a public server first as a middle man, and then via the server to reach the resources. The solution is to establish a ssh tunnel.&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# assume the circle is centered at (0, 0) with radius 1&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;math&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cos&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;random&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;
 
-&lt;p&gt;One can use a command line like &lt;code&gt;ssh -L xxx&lt;/code&gt; (google to see details).
-However we use a jsch library to (build a &lt;a href=&quot;http://topskychen.github.io&quot;&gt;java program&lt;/a&gt; and then) create a simple bash file. &lt;/p&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;generator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    	&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 
-&lt;p&gt;I have prepared a ssh.jar. To use it, type &lt;code&gt;java -jar ssh.jar local_port:ssh_server remote_server:remote_port&lt;/code&gt;.&lt;/p&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;generator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;    
+    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><category term="uniform distribution" /><category term="points generator" /><summary>Generate Points in a Circle with Uniform Distribution.</summary></entry><entry><title>SSH Tunnel via JSCH Library</title><link href="http://localhost:4000/articles/jsch-SSHTunnel/" rel="alternate" type="text/html" title="SSH Tunnel via JSCH Library" /><published>2015-04-24T00:00:00+08:00</published><updated>2015-04-24T00:00:00+08:00</updated><id>http://localhost:4000/articles/jsch-SSHTunnel</id><content type="html" xml:base="http://localhost:4000/articles/jsch-SSHTunnel/">&lt;p&gt;To retrieve resources behind the firewall, one solution is to connect to a public server first as a middle man, and then via the server to reach the resources. The solution is to establish a ssh tunnel.&lt;/p&gt;
 
-&lt;p&gt;By the way, we can use &lt;code&gt;lsof -i tcp:&#39;port_no&#39;&lt;/code&gt; to see the the port information, e.g., &lt;code&gt;lsof -i tcp:9001&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;One can use a command line like &lt;code class=&quot;highlighter-rouge&quot;&gt;ssh -L xxx&lt;/code&gt; (google to see details).
+However we use a jsch library to (build a &lt;a href=&quot;https://github.com/topskychen/SSH_Tunnel&quot;&gt;java program&lt;/a&gt; and then) create a simple bash file.&lt;/p&gt;
 
+&lt;p&gt;I have prepared a ssh.jar. To use it, type &lt;code class=&quot;highlighter-rouge&quot;&gt;java -jar ssh.jar local_port:ssh_server remote_server:remote_port&lt;/code&gt;.&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/jsch-SSHTunnel/&quot;&gt;SSH Tunnel via JSCH Library&lt;/a&gt; was originally published by Qian Chen at &lt;a href=&quot;http://localhost:4000&quot;&gt;&lt;/a&gt; on April 24, 2015.&lt;/p&gt;
-  </content>
-</entry>
-
-
-  
-
-<entry>
-  <title type="html"><![CDATA[Hello World]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/so-simple-theme-blog/" />
-  <id>http://localhost:4000/blog/so-simple-theme-blog</id>
-  <updated>2015-04-24T00:00:00-00:00</updated>
-  <published>2015-04-08T00:00:00+08:00</published>
-  
-  <author>
-    <name>Qian Chen</name>
-    <uri>http://localhost:4000</uri>
-    <email>topskychen@gmail.com</email>
-  </author>
-  <content type="html">
-    &lt;p&gt;This is the hello world for my blog.
+&lt;p&gt;By the way, we can use &lt;code class=&quot;highlighter-rouge&quot;&gt;lsof -i tcp:&#39;port_no&#39;&lt;/code&gt; to see the the port information, e.g., &lt;code class=&quot;highlighter-rouge&quot;&gt;lsof -i tcp:9001&lt;/code&gt;.&lt;/p&gt;</content><category term="ssh" /><category term="jsch" /><summary>Establish a ssh tunnel to retrieve the resources behind the firewall.</summary></entry><entry><title>Hello World</title><link href="http://localhost:4000/blog/so-simple-theme-blog/" rel="alternate" type="text/html" title="Hello World" /><published>2015-04-08T00:00:00+08:00</published><updated>2015-04-08T00:00:00+08:00</updated><id>http://localhost:4000/blog/so-simple-theme-blog</id><content type="html" xml:base="http://localhost:4000/blog/so-simple-theme-blog/">&lt;p&gt;This is the hello world for my blog.
 See &lt;a href=&quot;http://mmistakes.github.io/so-simple-theme/theme-setup/#running-jekyll&quot;&gt;details&lt;/a&gt; for more information.&lt;/p&gt;
 
-&lt;p&gt;The most common lines are &lt;code&gt;bundle exec jekyll build&lt;/code&gt; and &lt;code&gt;bundle exec jekyll serve&lt;/code&gt;.&lt;/p&gt;
-
-    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/so-simple-theme-blog/&quot;&gt;Hello World&lt;/a&gt; was originally published by Qian Chen at &lt;a href=&quot;http://localhost:4000&quot;&gt;&lt;/a&gt; on April 08, 2015.&lt;/p&gt;
-  </content>
-</entry>
-
-</feed>
+&lt;p&gt;The most common lines are &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec jekyll build&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt;.&lt;/p&gt;</content><summary>This is the hello world for my blog.
+See details for more information.</summary></entry></feed>

@@ -1,0 +1,22 @@
+<p>One naive but wrong idea is to randomly pick the degree and then the radius. We can find out the probability for a point located at $(\alpha, r)$ in a circle is $p(\alpha, r) = \frac{1} {2\pi R}$, where R is the circle radius, which is different from the uniform probability $\frac{1} {\pi R^2}$.</p>
+
+<p>Instead, we can regard a circle composed of infinite triangles. Since we can easily generate uniform-distributed points in a triangle, it is easy to find the correct solution for a circle. See this <a href="http://stackoverflow.com/questions/5837572/generate-a-random-point-within-a-circle-uniformly">answer</a> for ref.</p>
+
+<p>As a conclusion, the pseudocode of generator is listed as follows:</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># assume the circle is centered at (0, 0) with radius 1</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">random</span>
+
+<span class="k">def</span> <span class="nf">generator</span><span class="p">():</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">random</span><span class="p">()</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">random</span><span class="p">()</span><span class="o">+</span><span class="n">random</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+    	<span class="n">r</span> <span class="o">=</span> <span class="mi">2</span><span class="o">-</span><span class="n">r</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">r</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+	<span class="k">print</span> <span class="n">generator</span><span class="p">()</span>    
+    
+</code></pre>
+</div>
