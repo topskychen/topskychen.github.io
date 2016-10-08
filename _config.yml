@@ -5,8 +5,8 @@ locale: en_US
 description: 
 logo: logo-CQ.png
 search: true
-url: http://localhost:4000
-# url: https://topskychen.github.io
+# url: http://localhost:4000
+url: https://topskychen.github.io
 # Jekyll configuration
 
 permalink:   /:categories/:title/
